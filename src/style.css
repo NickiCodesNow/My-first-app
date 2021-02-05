@@ -1,0 +1,83 @@
+a {
+    color: white;
+  }
+  
+  ul {
+    list-style-type: none;
+    line-height: 0.5;
+    text-align: left;
+    position: relative;
+    left: -30px;
+  }
+  
+  .search-img {
+    height: 170px;
+  }
+  .search-bar {
+    position: relative;
+    width: 100%;
+  }
+  
+  .units {
+    font-size: 11px;
+    font-weight: 200;
+    line-height: 1.5;
+    text-align: left;
+    position: relative;
+    top: -14px;
+  }
+  
+  .fa-sun {
+    color: rgb(250, 250, 39);
+    font-size: 30px;
+  }
+  
+  .today,
+  .week {
+    background-color: rgba(51, 124, 178, 0.5);
+    color: white;
+    border-color: rgb(109, 108, 108);
+  }
+  .today .col-3 {
+    text-align: center;
+  }
+  
+  .today i {
+    font-size: 40px;
+  }
+  
+  .week .col-2 {
+    text-align: center;
+  }
+  .weather-diagram {
+    width: 100%;
+  }
+  .degrees,
+  .date {
+    font-size: 15px;
+  }
+  .day,
+  .daytime {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  #current-Location-button {
+    color: white;
+    background-color: rgba(51, 124, 178, 0.5);
+  }
+  
+  #current-date {
+    font-size: 10px;
+    font-weight: lighter;
+  }
+  
+  #current-city {
+    line-height: 25px;
+    font-size: 25px;
+  }
+  
+  #current-temp {
+    font-size: 30px;
+  }
+  
