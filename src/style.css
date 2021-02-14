@@ -10,6 +10,14 @@ a {
     left: -30px;
   }
   
+footer {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  color: white;
+  background-color: black;
+}
+
   .search-img {
     height: 170px;
   }
