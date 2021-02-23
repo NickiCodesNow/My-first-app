@@ -94,4 +94,4 @@ function currentDate(date) {
   
   // City by Default
   
-  search("Munich");
+  search("Berlin");
