@@ -68,11 +68,6 @@ footer {
   .temp-display .active {
     color: white; 
     cursor: default;
-    text-decoration: none;
-  }
-
-  .temp-display .active:hover {
-   text-decoration: none;
   }
   
   #current-Location-button {
