@@ -64,33 +64,38 @@ function currentDate(date) {
   }
   
   function showTemp(response) {
-    console.log(response)
+    celsiusTemperature = response.data.main.temp;
+
     document.querySelector("#current-city").innerHTML = response.data.name;
-    document.querySelector("#current-temp").innerHTML = Math.round(response.data.main.temp);
+    document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemperature);
 
     // Change Weather Icon
     document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description);
   }
+  
   // Celsius vs Fahrenheit
   
-  function c2C(event) {
+  function f2C(event) {
     event.preventDefault();
     let tempElement = document.querySelector("#current-temp");
-    tempElement.innerHTML = 18;
+    tempElement.innerHTML = Math.round(celsiusTemperature);
   }
   
   let celsiusLink = document.querySelector("#celsius-link");
-  celsiusLink.addEventListener("click", c2C);
+  celsiusLink.addEventListener("click", f2C);
   
   function c2F(event) {
     event.preventDefault();
+    let fahrenheitTemperature = (celsiusTemperature *9) / 5 + 32;
     let tempElement = document.querySelector("#current-temp");
-    tempElement.innerHTML = 64;
+    tempElement.innerHTML = Math.round(fahrenheitTemperature);
   }
   
   let fahrenheitLink = document.querySelector("#fahrenheit-link");
   fahrenheitLink.addEventListener("click", c2F);
+
+  let celsiusTemperature = null;
   
   // City by Default
   
