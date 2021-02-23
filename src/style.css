@@ -32,7 +32,7 @@ footer {
     line-height: 1.5;
     text-align: left;
     position: relative;
-    top: -23px;
+    top: -21px;
   }
     
   .today,
@@ -83,11 +83,11 @@ footer {
   #current-temp {
     font-size: 30px;
     position: relative;
-    top: -10px;
+    top: -8px;
   }
 
   #weather-icon {
-    width: 10%;
+    width: 55px;
     height: auto;
     position: relative;
     top: -16px;

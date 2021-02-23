@@ -67,8 +67,10 @@ function currentDate(date) {
     console.log(response)
     document.querySelector("#current-city").innerHTML = response.data.name;
     document.querySelector("#current-temp").innerHTML = Math.round(response.data.main.temp);
+
+    // Change Weather Icon
     document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-}
+  }
   // Celsius vs Fahrenheit
   
   function c2C(event) {
