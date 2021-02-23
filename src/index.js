@@ -79,6 +79,10 @@ function currentDate(date) {
   function f2C(event) {
     event.preventDefault();
     let tempElement = document.querySelector("#current-temp");
+
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+
     tempElement.innerHTML = Math.round(celsiusTemperature);
   }
   
@@ -87,6 +91,10 @@ function currentDate(date) {
   
   function c2F(event) {
     event.preventDefault();
+
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+
     let fahrenheitTemperature = (celsiusTemperature *9) / 5 + 32;
     let tempElement = document.querySelector("#current-temp");
     tempElement.innerHTML = Math.round(fahrenheitTemperature);

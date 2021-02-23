@@ -1,5 +1,5 @@
-a {
-    color: white;
+  a{
+    text-decoration: none;
   }
   
   ul {
@@ -63,6 +63,16 @@ footer {
   .daytime {
     font-size: 20px;
     font-weight: bold;
+  }
+
+  .temp-display .active {
+    color: white; 
+    cursor: default;
+    text-decoration: none;
+  }
+
+  .temp-display .active:hover {
+   text-decoration: none;
   }
   
   #current-Location-button {
