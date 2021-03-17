@@ -44,21 +44,25 @@ function currentDate(date) {
 
   function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast-hourly");
-    let forecast = response.data.list[0];
+    forecastElement.innerHTML = null;
+    let forecast = null;
 
-    forecastElement.innerHTML = `
-    <div class="col-3">
-              <img 
-                class="forecast-img"
-                src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" 
-                alt=""
-              />
-              <br />
-              <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
-              <br />
-              <span class="daytime">${formatHours(forecast.dt * 1000)}</span>
-            </div>
-            `;
+    for (let index = 0; index < 4; index++) {
+      forecast = response.data.list[index];
+      forecastElement.innerHTML += `
+      <div class="col-3">
+        <img 
+        class="forecast-img"
+        src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" 
+        alt=""
+        />
+        <br />
+        <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
+        <br />
+        <span class="daytime">${formatHours(forecast.dt * 1000)}</span>
+      </div>
+    `; 
+    }
   }
   
   function search(city) {
