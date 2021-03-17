@@ -27,20 +27,37 @@ function currentDate(date) {
   changeDate.innerHTML = currentDate(new Date());
 
   // Function to format Forecast hours
-  function formatHours(timestamp) {
-    let date = new Date(timestamp);
-    let currentHour = date.getHours();
-    if (currentHour < 10) {
-      currentHour = `0${currentHour}`;
-    }
-    let currentMinutes = date.getMinutes();
-    if (currentMinutes < 10) {
-      currentMinutes = `0${currentMinutes}`;
-    }
-    return `${currentHour}:${currentMinutes}`;
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let currentHour = date.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
   }
+  let currentMinutes = date.getMinutes();
+  if (currentMinutes < 10) {
+    currentMinutes = `0${currentMinutes}`;
+  }
+  return `${currentHour}:${currentMinutes}`;
+}
+
+// Function to format Daily Forecast 
+function formatDays(timestamp) {
+  let date = new Date(timestamp);
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let day = days[date.getDay()];
   
-  //When entering a city incl Forecast
+  return `${day}`;
+}
+
+//When entering a city incl changing Forecast
 
   function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast-hourly");
@@ -64,16 +81,45 @@ function currentDate(date) {
     `; 
     }
   }
+
+    function displayForecastDays(response) {
+    let forecastDaysElement = document.querySelector("#forecast-daily");
+    forecastDaysElement.innerHTML = null;
+    let forecast = null;
+
+    console.log(response);
   
+    for (let index = 1; index < 6; index++) {
+      forecast = response.data.daily[index];
+      forecastDaysElement.innerHTML += `
+      <div class="col-3">
+      <img 
+      class="forecast-img"
+      src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" 
+      alt=""
+      />
+      <br />
+      <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
+      <br />
+      <span class="daytime">${formatDays(forecast.dt * 1000)}</span>
+      </div>
+      `; 
+    }
+  }
   function search(city) {
     let apiKey = "23b543af1bc755ab2201c90ef60bdb0f";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  
+    
     axios.get(apiUrl).then(showTemp);
-
-    // Forecast
+    
+    // Forecast hourly
     apiUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
+  
+    //Forcast daily
+    apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecastDays);
+
   }
   
   function whenSubmit(event) {
@@ -85,7 +131,7 @@ function currentDate(date) {
   let enterCity = document.querySelector("#search-bar");
   enterCity.addEventListener("submit", whenSubmit);
   
-  // When using Current Location
+  // Using Current Location
   
   let buttonCurrentLocation = document.querySelector("#current-Location-button");
   buttonCurrentLocation.addEventListener("click", currentTemp);
@@ -117,7 +163,7 @@ function currentDate(date) {
     document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description);
   }
-  
+ 
   // Celsius vs Fahrenheit
   
   function f2C(event) {
@@ -148,7 +194,7 @@ function currentDate(date) {
   fahrenheitLink.addEventListener("click", c2F);
 
   let celsiusTemperature = null;
-  
+ 
   // City by Default
   
   search("Berlin");
