@@ -25,6 +25,20 @@ function currentDate(date) {
   }
   let changeDate = document.querySelector("#current-date");
   changeDate.innerHTML = currentDate(new Date());
+
+  // Function to format Forecast hours
+  function formatHours(timestamp) {
+    let date = new Date(timestamp);
+    let currentHour = date.getHours();
+    if (currentHour < 10) {
+      currentHour = `0${currentHour}`;
+    }
+    let currentMinutes = date.getMinutes();
+    if (currentMinutes < 10) {
+      currentMinutes = `0${currentMinutes}`;
+    }
+    return `${currentHour}:${currentMinutes}`;
+  }
   
   //When entering a city incl Forecast
 
@@ -42,7 +56,7 @@ function currentDate(date) {
               <br />
               <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
               <br />
-              <span class="daytime">Morning</span>
+              <span class="daytime">${formatHours(forecast.dt * 1000)}</span>
             </div>
             `;
   }
