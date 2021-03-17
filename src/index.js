@@ -42,7 +42,7 @@ function formatHours(timestamp) {
 
 // Function to format Daily Forecast 
 function formatDays(timestamp) {
-  let date = new Date(timestamp);
+  let today = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -52,7 +52,7 @@ function formatDays(timestamp) {
     "Friday",
     "Saturday"
   ];
-  let day = days[date.getDay()];
+  let day = days[today.getDay()];
   
   return `${day}`;
 }
