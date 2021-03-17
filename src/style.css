@@ -25,6 +25,14 @@ footer {
     position: relative;
     width: 100%;
   }
+  .units {
+    font-size: 11px;
+    font-weight: 200;
+    line-height: 1.5;
+    text-align: left;
+    position: relative;
+    top: -21px;
+  }
   
   .forecast-img {
     height: 90px;
@@ -38,15 +46,6 @@ footer {
     top: -15px;
   }
 
-  .units {
-    font-size: 11px;
-    font-weight: 200;
-    line-height: 1.5;
-    text-align: left;
-    position: relative;
-    top: -21px;
-  }
-    
   .today,
   .week {
     background-color: rgba(46, 116, 176, 0.7);
@@ -56,11 +55,7 @@ footer {
   .today .col-3 {
     text-align: center;
   }
-  
-  .today i {
-    font-size: 40px;
-  }
-  
+   
   .week .col-2 {
     text-align: center;
   }
@@ -88,7 +83,7 @@ footer {
   }
   
   #current-date {
-    font-size: 10px;
+    font-size: 13px;
     font-weight: lighter;
   }
   
