@@ -29,19 +29,18 @@ function currentDate(date) {
   //When entering a city incl Forecast
 
   function displayForecast(response) {
-    console.log(response.data.list[0]);
     let forecastElement = document.querySelector("#forecast-hourly");
+    let forecast = response.data.list[0];
 
-    forecastElement.innerHTML += `
+    forecastElement.innerHTML = `
     <div class="col-3">
               <i class="fas fa-cloud-sun"></i>
               <br />
-              6°C
+              ${Math.round(forecast.main.temp)}°C
               <br />
               <span class="daytime">Morning</span>
             </div>
             `;
-
   }
   
   function search(city) {
