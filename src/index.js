@@ -27,7 +27,7 @@ function currentDate(date) {
   changeDate.innerHTML = currentDate(new Date());
 
   // Function to format Forecast hours
-function formatHours(timestamp) {
+  function formatHours(timestamp) {
   let date = new Date(timestamp);
   let currentHour = date.getHours();
   if (currentHour < 10) {
@@ -44,20 +44,41 @@ function formatHours(timestamp) {
 function formatDays(timestamp) {
   let today = new Date(timestamp);
   let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
   ];
   let day = days[today.getDay()];
   
   return `${day}`;
 }
 
+// Show Temperature
+function showTemp(response) {
+  celsiusTemperature = response.data.main.temp;
+
+  document.querySelector("#current-city").innerHTML = response.data.name;
+  document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemperature);
+
+  // Change Weather Icon
+  document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description);
+
+  let cityLatitude = response.data.coord.lat;
+  let cityLongitude = response.data.coord.lon;
+
+  let apiKey = "23b543af1bc755ab2201c90ef60bdb0f";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLatitude}&lon=${cityLongitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
+  
+  axios.get(apiUrl).then(displayForecastDays);
+}
+
 //When entering a city incl changing Forecast
+
 
   function displayForecast(response) {
     let forecastElement = document.querySelector("#forecast-hourly");
@@ -85,23 +106,21 @@ function formatDays(timestamp) {
     function displayForecastDays(response) {
     let forecastDaysElement = document.querySelector("#forecast-daily");
     forecastDaysElement.innerHTML = null;
-    let forecast = null;
-
-    console.log(response);
+    let dailyForecast = null;
   
-    for (let index = 1; index < 6; index++) {
-      forecast = response.data.daily[index];
+    for (let index = 1; index <= 6; index++) {
+      dailyForecast = response.data.daily[index];
       forecastDaysElement.innerHTML += `
-      <div class="col-3">
+      <div class="col-2">
       <img 
       class="forecast-img"
-      src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" 
+      src="http://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png" 
       alt=""
       />
       <br />
-      <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
+      <span class="forecast-temp">${Math.round(dailyForecast.temp.day)}°C</span>
       <br />
-      <span class="daytime">${formatDays(forecast.dt * 1000)}</span>
+      <span class="daytime">${formatDays(dailyForecast.dt * 1000)}</span>
       </div>
       `; 
     }
@@ -115,12 +134,7 @@ function formatDays(timestamp) {
     // Forecast hourly
     apiUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForecast);
-  
-    //Forcast daily
-    apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayForecastDays);
-
-  }
+    }
   
   function whenSubmit(event) {
     event.preventDefault();
@@ -153,17 +167,6 @@ function formatDays(timestamp) {
     axios.get(apiUrl).then(displayForecast);
   }
   
-  function showTemp(response) {
-    celsiusTemperature = response.data.main.temp;
-
-    document.querySelector("#current-city").innerHTML = response.data.name;
-    document.querySelector("#current-temp").innerHTML = Math.round(celsiusTemperature);
-
-    // Change Weather Icon
-    document.querySelector("#weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-    document.querySelector("#weather-icon").setAttribute("alt", response.data.weather[0].description);
-  }
- 
   // Celsius vs Fahrenheit
   
   function f2C(event) {
