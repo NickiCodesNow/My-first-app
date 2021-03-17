@@ -30,6 +30,7 @@ footer {
     height: 90px;
     position: relative;
     top: -10px;
+    filter: drop-shadow(1px 1px 1px grey):
   }
 
   .forecast-temp, 
@@ -57,10 +58,6 @@ footer {
     text-align: center;
   }
   
-  .today i {
-    font-size: 40px;
-  }
-  
   .week .col-2 {
     text-align: center;
   }
@@ -80,6 +77,10 @@ footer {
   .temp-display .active {
     color: white; 
     cursor: default;
+  }
+
+  #weather-icon {
+    filter: drop-shadow(1px 1px 1px yellow):
   }
   
   #current-Location-button {
