@@ -34,9 +34,13 @@ function currentDate(date) {
 
     forecastElement.innerHTML = `
     <div class="col-3">
-              <i class="fas fa-cloud-sun"></i>
+              <img 
+                class="forecast-img"
+                src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" 
+                alt=""
+              />
               <br />
-              ${Math.round(forecast.main.temp)}°C
+              <span class="forecast-temp">${Math.round(forecast.main.temp)}°C</span>
               <br />
               <span class="daytime">Morning</span>
             </div>
