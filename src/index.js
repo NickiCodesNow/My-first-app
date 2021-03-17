@@ -26,13 +26,33 @@ function currentDate(date) {
   let changeDate = document.querySelector("#current-date");
   changeDate.innerHTML = currentDate(new Date());
   
-  //When entering a city
+  //When entering a city incl Forecast
+
+  function displayForecast(response) {
+    console.log(response.data.list[0]);
+    let forecastElement = document.querySelector("#forecast-hourly");
+
+    forecastElement.innerHTML += `
+    <div class="col-3">
+              <i class="fas fa-cloud-sun"></i>
+              <br />
+              6°C
+              <br />
+              <span class="daytime">Morning</span>
+            </div>
+            `;
+
+  }
   
   function search(city) {
     let apiKey = "23b543af1bc755ab2201c90ef60bdb0f";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   
     axios.get(apiUrl).then(showTemp);
+
+    // Forecast
+    apiUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayForecast);
   }
   
   function whenSubmit(event) {
