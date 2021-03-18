@@ -76,6 +76,10 @@ function showTemp(response) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${cityLatitude}&lon=${cityLongitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${apiKey}`;
   
   axios.get(apiUrl).then(displayForecastDays);
+
+  let backgroundElement = document.querySelector(".container");
+  backgroundElement.style.backgroundImage = `url(src/images/${response.data.weather[0].icon}.jpg)`;
+  }
 }
 
   // Forecast
