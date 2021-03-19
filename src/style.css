@@ -80,11 +80,15 @@ footer {
   #current-date {
     font-size: 13px;
     font-weight: lighter;
+    position: relative;
+    left: 15px;
   }
   
   #current-city {
     line-height: 25px;
     font-size: 25px;
+    position: relative;
+    left: 15px;
   }
   
   #current-temp {
