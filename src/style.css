@@ -14,16 +14,20 @@
     left: -30px;
   }
   
-footer {
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-  color: white;
-  background-color: black;
+  footer {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: black;
 }
 
   .card {
     background-color: rgba(243, 237, 237, 0.4);
+  }
+
+  .today {
+    margin: 20px auto;
   }
 
   .search-bar {
