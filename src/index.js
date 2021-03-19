@@ -77,6 +77,8 @@ function showTemp(response) {
   
   axios.get(apiUrl).then(displayForecastDays);
 
+  // Change Background
+
   let backgroundElement = document.querySelector(".container");
   backgroundElement.style.backgroundImage = `url(images/${response.data.weather[0].icon}.jpg)`;
 }
