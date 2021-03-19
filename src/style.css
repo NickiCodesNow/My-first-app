@@ -18,9 +18,10 @@ footer {
   background-color: black;
 }
 
-  .search-img {
-    height: 170px;
-  }
+.card {
+  background-color: rgba(243, 237, 237, 0.2);
+}
+
   .search-bar {
     position: relative;
     width: 100%;
@@ -46,12 +47,6 @@ footer {
     top: -15px;
   }
 
-  .today,
-  .week {
-    background-color: rgba(46, 116, 176, 0.7);
-    color: white;
-    border-color: rgb(109, 108, 108);
-  }
   .today .col-3 {
     text-align: center;
   }
