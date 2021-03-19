@@ -1,3 +1,7 @@
+  .container {
+    background-size: cover;
+  }
+  
   a{
     text-decoration: none;
   }
@@ -18,9 +22,9 @@ footer {
   background-color: black;
 }
 
-.card {
-  background-color: rgba(243, 237, 237, 0.2);
-}
+  .card {
+    background-color: rgba(243, 237, 237, 0.4);
+  }
 
   .search-bar {
     position: relative;
@@ -47,16 +51,11 @@ footer {
     top: -15px;
   }
 
-  .today .col-3 {
-    text-align: center;
-  }
-   
+  .today .col-3,
   .week .col-2 {
     text-align: center;
   }
-  .weather-diagram {
-    width: 100%;
-  }
+   
   .degrees,
   .date {
     font-size: 15px;
